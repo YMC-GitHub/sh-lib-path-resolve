@@ -34,7 +34,7 @@ resovle path like nodejs lib 'path'
 # run test
 ./test.sh
 #2 get some fail test
-./test.sh  grep "it is false"
+./test.sh | grep "it is false"
 ```
 
 ## author

@@ -105,13 +105,16 @@ function path_resolve() {
     slpit_char2=${4}
   fi
 
-  #FIX:when passed asboult path,dose not return the asboult path itself
+  #FIX:when passed asboult path,does not return the asboult path itself
   #str2="/d/"
   local str3=
   str3=""
-  # delete end char /
-  str2=$(echo $str2 | sed "s#/\$##")
-  ABSOLUTE_PATH_REG_PATTERN="^/"
+  #fix:path_resolve "/app/src" "/" #it will return "/" does not return the asboult path itself
+  if [ $str2 != "/" ]; then
+    # delete end char /
+    str2=$(echo $str2 | sed "s#/\$##")
+  fi
+
   if [ $(isAbsolute $str2) = "true" ]; then
     str3=$str2
   else

@@ -112,7 +112,7 @@ function path_resolve() {
   # delete end char /
   str2=$(echo $str2 | sed "s#/\$##")
   ABSOLUTE_PATH_REG_PATTERN="^/"
-  if [[ $str2 =~ $ABSOLUTE_PATH_REG_PATTERN ]]; then
+  if [ $(isAbsolute $str2) = "true" ]; then
     str3=$str2
   else
     str3=$(path_resolve_for_relative $str1 $str2 $slpit_char1 $slpit_char2)
@@ -129,3 +129,5 @@ function path_resolve() {
 
 ## file-usage
 # ./index.sh
+# or
+# source ./index.sh
